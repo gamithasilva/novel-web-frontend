@@ -1,0 +1,93 @@
+@import "tailwindcss";
+
+:root {
+  --bg: #000;
+  --fg: #f5f5f5;
+  --muted: rgba(245, 245, 245, 0.55);
+  --glass: rgba(255, 255, 255, 0.06);
+  --glass-strong: rgba(255, 255, 255, 0.13);
+  --border: rgba(255, 255, 255, 0.14);
+  --accent: #fff;
+  --accent-fg: #000;
+  --shadow: 0 8px 40px rgba(0, 0, 0, 0.6);
+  --orb1: rgba(255, 255, 255, 0.11);
+  --orb2: rgba(255, 255, 255, 0.06);
+  color-scheme: dark;
+}
+[data-theme="light"] {
+  --bg: #f6f6f6;
+  --fg: #0a0a0a;
+  --muted: rgba(10, 10, 10, 0.55);
+  --glass: rgba(255, 255, 255, 0.55);
+  --glass-strong: rgba(255, 255, 255, 0.85);
+  --border: rgba(0, 0, 0, 0.12);
+  --accent: #000;
+  --accent-fg: #fff;
+  --shadow: 0 8px 40px rgba(0, 0, 0, 0.12);
+  --orb1: rgba(0, 0, 0, 0.09);
+  --orb2: rgba(0, 0, 0, 0.05);
+  color-scheme: light;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background-color: var(--bg);
+  background-image:
+    radial-gradient(60rem 40rem at 12% -10%, var(--orb1), transparent 60%),
+    radial-gradient(50rem 40rem at 100% 25%, var(--orb2), transparent 60%);
+  background-attachment: fixed;
+  color: var(--fg);
+  font-family: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+.glass {
+  background: var(--glass);
+  backdrop-filter: blur(24px) saturate(150%);
+  -webkit-backdrop-filter: blur(24px) saturate(150%);
+  border: 1px solid var(--border);
+  border-radius: 1.1rem;
+  box-shadow: var(--shadow), inset 0 1px 0 rgba(255, 255, 255, 0.07);
+}
+.muted { color: var(--muted); }
+
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
+  padding: 0.55rem 1rem; border-radius: 0.8rem;
+  border: 1px solid var(--border); background: var(--glass);
+  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  color: var(--fg); font-size: 0.875rem; font-weight: 600; cursor: pointer;
+  transition: background 0.2s, transform 0.15s, opacity 0.2s;
+}
+.btn:hover { background: var(--glass-strong); }
+.btn:active { transform: scale(0.97); }
+.btn:disabled { opacity: 0.4; cursor: not-allowed; }
+.btn-solid { background: var(--accent); color: var(--accent-fg); border-color: var(--accent); }
+.btn-solid:hover { background: var(--accent); opacity: 0.85; }
+.btn-sm { padding: 0.35rem 0.7rem; font-size: 0.75rem; border-radius: 0.6rem; }
+
+.input {
+  width: 100%; padding: 0.65rem 0.9rem; border-radius: 0.8rem;
+  border: 1px solid var(--border); background: var(--glass);
+  color: var(--fg); font-size: 0.9rem; outline: none; transition: border-color 0.2s;
+}
+.input:focus { border-color: var(--fg); }
+.input::placeholder { color: var(--muted); }
+select.input option { background: var(--bg); color: var(--fg); }
+
+.chip {
+  display: inline-block; padding: 0.3rem 0.75rem; border-radius: 999px;
+  border: 1px solid var(--border); background: var(--glass);
+  font-size: 0.75rem; font-weight: 500; cursor: pointer; white-space: nowrap;
+  transition: background 0.2s;
+}
+.chip:hover { background: var(--glass-strong); }
+.chip-active { background: var(--accent); color: var(--accent-fg); border-color: var(--accent); }
+
+.reader-text p { margin: 0 0 1.15em; padding: 0.15em 0.5em; border-radius: 0.5rem; transition: background 0.25s; }
+.reader-text p.tts-active { background: var(--glass-strong); box-shadow: inset 3px 0 0 var(--fg); }
+
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 10px; }
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { scrollbar-width: none; }
